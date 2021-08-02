@@ -1,7 +1,8 @@
 //Quick sort
 //https://beginnersbook.com/2015/02/quicksort-program-in-c/
 
-void quicksort(int number[25],int first,int last, int ctr){
+static long long int Quick(int number[],int first,int last){
+   long long int ctr;
    int i, j, pivot, temp;
    ctr++;
 
@@ -49,11 +50,10 @@ void quicksort(int number[25],int first,int last, int ctr){
       ctr++;
       number[j]=temp;
       ctr++;
-      quicksort(number,first,j-1, ctr);
-      ctr++;
-      quicksort(number,j+1,last, ctr);
-      ctr++;
+      ctr += Quick(number,first,j-1);
+      ctr += Quick(number,j+1,last);
 
+   return ctr;
    }
 }
 

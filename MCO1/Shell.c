@@ -1,8 +1,9 @@
 // Shell Sort in c
 // https://www.educba.com/shell-sort-c/
-int Shell(int A[], int n) 
+long long int Shell(int A[], int n) 
 {
-    int gap, i, ctr=0;
+    int gap, i;
+    long long int ctr=0;
     for (gap = n / 2; gap > 0; gap /= 2) 
     {
         ctr++;
@@ -24,4 +25,6 @@ int Shell(int A[], int n)
         ctr++;
     }
     ctr++;
+
+    return ctr;
 }

@@ -4,111 +4,96 @@
 // Merges two subarrays of arr[].
 // First subarray is arr[l..m]
 // Second subarray is arr[m+1..r]
-void merge(int arr[], int l, int m, int r, int *ctr)
+
+static long long int merge(int arr[], int l, int m, int r)
 {
+    long long int ctr2;
     int i, j, k;
     int n1 = m - l + 1;
     int n2 = r - m;
-    (*ctr)++;
-    (*ctr)++;
-    (*ctr)++;
     /* create temp arrays */
     int L[n1], R[n2];
-    (*ctr)++;
  
     /* Copy data to temp arrays L[] and R[] */
     for (i = 0; i < n1; i++)
-        {
-        (*ctr)++;
+    {
         L[i] = arr[l + i];
-        (*ctr)++;
-        }
-    (*ctr)++;
+        ctr2++;
+    }
+    ctr2++;
     for (j = 0; j < n2; j++)
         {
-        (*ctr)++;
         R[j] = arr[m + 1 + j];
-        (*ctr)++;
+        ctr2++;
         }
-    (*ctr)++;
+    ctr2++;
  
     /* Merge the temp arrays back into arr[l..r]*/
     i = 0; // Initial index of first subarray
     j = 0; // Initial index of second subarray
     k = l; // Initial index of merged subarray
-    (*ctr)++;
-    (*ctr)++;
-    (*ctr)++;
+
     while (i < n1 && j < n2) {
-        (*ctr)++;
+        ctr2++;
         if (L[i] <= R[j]) {
-            (*ctr)++;
-            arr[k] = L[i];
-            (*ctr)++;
-            i++;
-            (*ctr)++;
+            arr[k++] = L[i++];
+            ctr2++;
         }
         else {
-            (*ctr)++;
-            arr[k] = R[j];
-            (*ctr)++;
-            j++;
-            (*ctr)++;
+            arr[k++] = R[j++];
+            ctr2++;
         }
-        k++;
-        (*ctr)++;
     }
-    (*ctr)++;
+    ctr2++;
  
     /* Copy the remaining elements of L[], if there
     are any */
     while (i < n1) {
-        (*ctr)++;
-        arr[k] = L[i];
-        (*ctr)++;
-        i++;
-        (*ctr)++;
-        k++;
-        (*ctr)++;
+        arr[k++] = L[i++];
+        ctr2++;
     }
-    (*ctr)++;
+    ctr2++;
  
     /* Copy the remaining elements of R[], if there
     are any */
     while (j < n2) {
-        (*ctr)++;
-        arr[k] = R[j];
-        (*ctr)++;
-        j++;
-        (*ctr)++;
-        k++;
-        (*ctr)++;
+        arr[k++] = R[j++];
+        ctr2++;
     }
-    (*ctr)++;
+    ctr2++;
+
+    return ctr2;
+}
+void printArray(int A[], int size)
+{
+    int i;
+    for (i = 0; i < size; i++)
+        printf("%d ", A[i]);
+    printf("\n");
 }
  
 /* l is for left index and r is right index of the
 sub-array of arr to be sorted */
-void mergeSort(int arr[], int l, int r, int * ctr)
+static long long int mergeSort(int arr[], int l, int r)
 {
-
+    long long int ctr = 0;
     if (l < r) {
-        (*ctr)++;
+        ctr++;
         // Same as (l+r)/2, but avoids overflow for
         // large l and h
         int m = l + (r - l) / 2;
-        (*ctr)++;
-        // Sort first and second halves
-        mergeSort(arr, l, m, &ctr);
-        (*ctr)++;
-        mergeSort(arr, m + 1, r, &ctr);
-        (*ctr)++;
- 
-        merge(arr, l, m, r, &ctr);
-        (*ctr)++;
-    }   
-    (*ctr)++;
+        ctr++;
+        // Sort first and second halves  
+        ctr += mergeSort(arr, l, m);
+        ctr += mergeSort(arr, m + 1, r);
+        merge(arr, l, m, r);
+        ctr++;
+    }
+    ctr++;
+
+    return ctr;
 }
+
 
  
 /* Driver code */

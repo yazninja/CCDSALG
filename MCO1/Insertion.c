@@ -2,9 +2,10 @@
 //https://www.geeksforgeeks.org/insertion-sort/
  
 /* Function to sort an array using insertion sort*/
-long int Insertion(int arr[], int n)
+long long int Insertion(int arr[], int n)
 {
-    int i, key, j, ctr=0;
+    long long int ctr = 0;
+    int i, key, j;
     ctr++;
 
     for (i = 1; i < n; i++) {

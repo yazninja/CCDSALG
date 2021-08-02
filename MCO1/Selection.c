@@ -1,7 +1,7 @@
 // C program for implementation of selection sort
 //https://www.geeksforgeeks.org/selection-sort/
 
-void swap(int *xp, int *yp, int *ctr)
+void swap(int *xp, int *yp, long long int *ctr)
 {
     (*ctr)++;
     int temp = *xp;
@@ -12,9 +12,10 @@ void swap(int *xp, int *yp, int *ctr)
     (*ctr)++;
 }
  
-long int Selection(int arr[], int n)
+long long int Selection(int arr[], int n)
 {
-    int i, j, min_idx, ctr=0;
+    int i, j, min_idx;
+    long long int ctr =0;
     ctr++;
  
     // One by one move boundary of unsorted subarray

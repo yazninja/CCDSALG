@@ -1,9 +1,10 @@
 // C Program for counting sort
 // https://www.geeksforgeeks.org/bubble-sort/
 
-long int Bubble(int array[], int n) // n = size of aray 
+long long int Bubble(int array[], int n) // n = size of aray 
 {
-  int ctr=0, c, d, swap;
+  long long int ctr =0;
+  int c, d, swap;
   for (c = 0 ; c < n - 1; c++)
   {
     ctr++;
