@@ -7,24 +7,25 @@
 
 static long long int merge(int arr[], int l, int m, int r)
 {
-    long long int ctr2;
+    long long int ctr2 = 0;
     int i, j, k;
     int n1 = m - l + 1;
     int n2 = r - m;
     /* create temp arrays */
     int L[n1], R[n2];
- 
+
+    ctr2+=2;
     /* Copy data to temp arrays L[] and R[] */
     for (i = 0; i < n1; i++)
     {
         L[i] = arr[l + i];
-        ctr2++;
+        ctr2+=2;
     }
     ctr2++;
     for (j = 0; j < n2; j++)
         {
         R[j] = arr[m + 1 + j];
-        ctr2++;
+        ctr2+=2;
         }
     ctr2++;
  
@@ -32,7 +33,7 @@ static long long int merge(int arr[], int l, int m, int r)
     i = 0; // Initial index of first subarray
     j = 0; // Initial index of second subarray
     k = l; // Initial index of merged subarray
-
+    ctr2+=3;
     while (i < n1 && j < n2) {
         ctr2++;
         if (L[i] <= R[j]) {
@@ -50,7 +51,7 @@ static long long int merge(int arr[], int l, int m, int r)
     are any */
     while (i < n1) {
         arr[k++] = L[i++];
-        ctr2++;
+        ctr2+=2;
     }
     ctr2++;
  
@@ -58,10 +59,9 @@ static long long int merge(int arr[], int l, int m, int r)
     are any */
     while (j < n2) {
         arr[k++] = R[j++];
-        ctr2++;
+        ctr2+=2;
     }
     ctr2++;
-
     return ctr2;
 }
 void printArray(int A[], int size)
@@ -84,9 +84,9 @@ static long long int mergeSort(int arr[], int l, int r)
         int m = l + (r - l) / 2;
         ctr++;
         // Sort first and second halves  
-        ctr += mergeSort(arr, l, m);
-        ctr += mergeSort(arr, m + 1, r);
-        merge(arr, l, m, r);
+        ctr+= mergeSort(arr, l, m);
+        ctr+= mergeSort(arr, m + 1, r);
+        ctr+= merge(arr, l, m, r);
         ctr++;
     }
     ctr++;

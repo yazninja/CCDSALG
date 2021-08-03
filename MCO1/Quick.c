@@ -2,59 +2,54 @@
 //https://beginnersbook.com/2015/02/quicksort-program-in-c/
 
 static long long int Quick(int number[],int first,int last){
-   long long int ctr;
+   long long int ctr = 0;
    int i, j, pivot, temp;
-   ctr++;
 
    if(first<last){
-      ctr++;
       pivot=first;
-      ctr++;
       i=first;
-      ctr++;
       j=last;
-      ctr++;
+      ctr+=4;
 
       while(i<j){
-         ctr++;
+          ctr++;
          while(number[i]<=number[pivot]&&i<last)
             {
-            ctr++;
+            ctr+=2;
             i++;
-            ctr++;
             }
             ctr++;
          while(number[j]>number[pivot])
             {
-            ctr++;
+            ctr+=2;
             j--;
-            ctr++;
             }
             ctr++;
          if(i<j){
-            ctr++;
+
             temp=number[i];
-            ctr++;
+
             number[i]=number[j];
-            ctr++;
+
             number[j]=temp;
-            ctr++;
+            ctr+=4;
          }
-         ctr++;
-      }
       ctr++;
+      }
+
 
       temp=number[pivot];
-      ctr++;
       number[pivot]=number[j];
-      ctr++;
       number[j]=temp;
-      ctr++;
-      ctr += Quick(number,first,j-1);
-      ctr += Quick(number,j+1,last);
+      ctr+=4;
 
-   return ctr;
+      Quick(number,first,j-1);
+      Quick(number,j+1,last);
+    // printf("This is ctr: %lld\n", ctr);
+   
    }
+    ctr++;
+   return ctr;
 }
 
 // int main(){

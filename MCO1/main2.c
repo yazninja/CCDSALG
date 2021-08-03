@@ -87,6 +87,7 @@ int main()
         ctr[r] = 0;
         
         ctr[r] = mergeSort(A, 0, n-1); // sort array
+        // printf("This is ctr in main: %lld\n", ctr[r]);
         clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end); // End CPU timer
         seconds = end.tv_sec - begin.tv_sec;
         nanoseconds = end.tv_nsec - begin.tv_nsec;
