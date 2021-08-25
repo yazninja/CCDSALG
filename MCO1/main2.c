@@ -20,7 +20,6 @@ int main()
     int n;
     printf("Enter the n of Array to sort: ");
     scanf("%d", &n);
-    clock_t start_t, end_t;
     int A[n];
     int r;
     long long ctr[REPEAT];
